@@ -5,8 +5,8 @@
 using namespace std;
 template<class T>
 class BinaryTree;
-template<class T>//Ä£°åÀàÓÃ·¨£º³ıÁËÔÚÃüÃû¡¢¹¹Ôìº¯ÊıµÄÃû×Ö¡¢Îö¹¹º¯ÊıµÄÃû×Ö µÄÊ±ºò£¬ÆäËûÇé¿öÏÂ¶¼±ØĞë¼Ó<T>
-class BinaryTreeNode//¶ş²æÊ÷½ÚµãÀà
+template<class T>//æ¨¡æ¿ç±»ç”¨æ³•ï¼šé™¤äº†åœ¨å‘½åã€æ„é€ å‡½æ•°çš„åå­—ã€ææ„å‡½æ•°çš„åå­— çš„æ—¶å€™ï¼Œå…¶ä»–æƒ…å†µä¸‹éƒ½å¿…é¡»åŠ <T>çš„
+class BinaryTreeNode//äºŒå‰æ ‘èŠ‚ç‚¹ç±»
 {
 	friend class BinaryTree<T>;
 	friend void CreatTree(BinaryTreeNode<T> *root);
@@ -28,55 +28,55 @@ public:
 	int Degree();
 };
 template<class T>
-BinaryTreeNode<T>::BinaryTreeNode()//È±Ê¡¹¹Ôìº¯Êı
+BinaryTreeNode<T>::BinaryTreeNode()//ç¼ºçœæ„é€ å‡½æ•°
 {
 	leftChild = rightChild = NULL;
 }
 template<class T>
-BinaryTreeNode<T>::BinaryTreeNode(T ele)//½öÌîÖµµÄ¹¹Ôìº¯Êı
+BinaryTreeNode<T>::BinaryTreeNode(T ele)//ä»…å¡«å€¼çš„æ„é€ å‡½æ•°
 {
 	element = ele;
 	leftChild = rightChild = NULL;
 }
 template<class T>
-BinaryTreeNode<T>::BinaryTreeNode(T ele, BinaryTreeNode<T> *left, BinaryTreeNode<T> *right)//¹¹Ôìº¯Êı
+BinaryTreeNode<T>::BinaryTreeNode(T ele, BinaryTreeNode<T> *left, BinaryTreeNode<T> *right)//æ„é€ å‡½æ•°
 {
 	element = ele;
 	leftChild = left;
 	rightChild = right;
 }
 template<class T>
-void BinaryTreeNode<T>::setValue(T ele)//ÉèÖÃÖµ
+void BinaryTreeNode<T>::setValue(T ele)//è®¾ç½®å€¼
 {
 	element = ele;
 }
 template<class T>
-void BinaryTreeNode<T>::setleftChild(BinaryTreeNode<T> *left)//ÉèÖÃ×ó×ÓÊ÷
+void BinaryTreeNode<T>::setleftChild(BinaryTreeNode<T> *left)//è®¾ç½®å·¦å­æ ‘
 {
 	leftChild = left;
 }
 template<class T>
-void BinaryTreeNode<T>::setrightChild(BinaryTreeNode<T> *right)//ÉèÖÃÓÒ×ÓÊ÷
+void BinaryTreeNode<T>::setrightChild(BinaryTreeNode<T> *right)//è®¾ç½®å³å­æ ‘
 {
 	rightChild = right;
 }
 template<class T>
-BinaryTreeNode<T> * BinaryTreeNode<T>::getleftChild()//»ñµÃ×ó¶ù×ÓµÄÖ¸Õë
+BinaryTreeNode<T> * BinaryTreeNode<T>::getleftChild()//è·å¾—å·¦å„¿å­çš„æŒ‡é’ˆ
 {
 	return leftChild;
 }
 template<class T>
-BinaryTreeNode<T> * BinaryTreeNode<T>::getrightChild()//»ñµÃÓÒ¶ù×ÓµÄÖ¸Õë
+BinaryTreeNode<T> * BinaryTreeNode<T>::getrightChild()//è·å¾—å³å„¿å­çš„æŒ‡é’ˆ
 {
 	return rightChild;
 }
 template<class T>
-T BinaryTreeNode<T>::getValue()//È¡Öµ
+T BinaryTreeNode<T>::getValue()//å–å€¼
 {
 	return element;
 }
 template<class T>
-bool BinaryTreeNode<T>::isLeaf()//ÅĞ¶ÏÊÇ·ñÊÇÊ÷Ò¶
+bool BinaryTreeNode<T>::isLeaf()//åˆ¤æ–­æ˜¯å¦æ˜¯æ ‘å¶
 {
 	if (leftChild == NULL && rightChild == NULL)
 		return 1;
@@ -84,7 +84,7 @@ bool BinaryTreeNode<T>::isLeaf()//ÅĞ¶ÏÊÇ·ñÊÇÊ÷Ò¶
 		return 0;
 }
 template<class T>
-int BinaryTreeNode<T>::Degree()//Ëã½ÚµãµÄ¶È
+int BinaryTreeNode<T>::Degree()//ç®—èŠ‚ç‚¹çš„åº¦
 {
 	if (leftChild == NULL && rightChild == NULL)
 		return 0;
@@ -94,7 +94,7 @@ int BinaryTreeNode<T>::Degree()//Ëã½ÚµãµÄ¶È
 		return 1;
 }
 template<class T>
-class BinaryTree//¶ş²æÊ÷Àà
+class BinaryTree//äºŒå‰æ ‘ç±»
 {
 private:
 	BinaryTreeNode<T> *root;
@@ -103,15 +103,15 @@ public:
 	~BinaryTree();
 	bool isEmpty() const;
 	void Visit(BinaryTreeNode<T> *node);
-	void CreatTree(BinaryTreeNode<T> * &root);//½¨Á¢Ê÷
-	void ClearTree(BinaryTreeNode<T> *root);//ÊÍ·Å¿Õ¼ä
+	void CreatTree(BinaryTreeNode<T> * &root);//å»ºç«‹æ ‘
+	void ClearTree(BinaryTreeNode<T> *root);//é‡Šæ”¾ç©ºé—´
 	BinaryTreeNode<T> *getRoot() const;
-	void breadthFirstOrder(BinaryTreeNode<T> *root);//¹ã¶ÈÓÅÏÈ±éÀúÒÔrootÎª¸ù½ÚµãµÄ×ÓÊ÷
-	void preOrder(BinaryTreeNode<T> *root);//ÏÈĞò±éÀúÒÔrootÎª¸ù½ÚµãµÄ×ÓÊ÷
-	void inOrder(BinaryTreeNode<T> *root);//ÖĞĞò±éÀúÒÔrootÎª¸ù½ÚµãµÄ×ÓÊ÷
-	void postOrder(BinaryTreeNode<T> *root);//ºóĞò±éÀúÒÔrootÎª¸ù½ÚµãµÄ×ÓÊ÷
-	int CountNode(BinaryTreeNode<T> *root);//¼ÆËãÒ¶½Úµã
-	int Height(BinaryTreeNode<T> *root);//¼ÆËã¸ß¶È
+	void breadthFirstOrder(BinaryTreeNode<T> *root);//å¹¿åº¦ä¼˜å…ˆéå†ä»¥rootä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘
+	void preOrder(BinaryTreeNode<T> *root);//å…ˆåºéå†ä»¥rootä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘
+	void inOrder(BinaryTreeNode<T> *root);//ä¸­åºéå†ä»¥rootä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘
+	void postOrder(BinaryTreeNode<T> *root);//ååºéå†ä»¥rootä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘
+	int CountNode(BinaryTreeNode<T> *root);//è®¡ç®—å¶èŠ‚ç‚¹
+	int Height(BinaryTreeNode<T> *root);//è®¡ç®—é«˜åº¦
 };
 template<class T>
 BinaryTree<T>::BinaryTree()
@@ -124,7 +124,7 @@ BinaryTree<T>::~BinaryTree()
 	//delete []root;
 	ClearTree(root);
 }
-//¹ã¶ÈÓÅÏÈËÑË÷µÄÉ¾³ıËã·¨£¬ÒÀÈ»ÊÇ´ÓÉÏÍùÏÂÉ¾¡£ 
+//å¹¿åº¦ä¼˜å…ˆæœç´¢çš„åˆ é™¤ç®—æ³•ï¼Œä¾ç„¶æ˜¯ä»ä¸Šå¾€ä¸‹åˆ ã€‚ 
 template<class T>
 void BinaryTree<T>::ClearTree(BinaryTreeNode<T> *root)
 {
@@ -149,7 +149,7 @@ BinaryTreeNode<T> *BinaryTree<T>::getRoot()const
 {
 	return root;
 }
-template<class T>//¹ã¶ÈÓÅÏÈËÑË÷£¡£¡×¢Òâ 
+template<class T>//å¹¿åº¦ä¼˜å…ˆæœç´¢ï¼ï¼æ³¨æ„ 
 void BinaryTree<T>::breadthFirstOrder(BinaryTreeNode<T> *root)
 {
 	using std::queue;
@@ -174,10 +174,10 @@ void BinaryTree<T>::preOrder(BinaryTreeNode<T> *root)
 	if (root != NULL)
 	{
 		Visit(root);
-		//Ìî¿Õ 
+		//å¡«ç©º 
 		preOrder(root->leftChild);
 		preOrder(root->rightChild);
-		//Ìî¿Õ
+		//å¡«ç©º
 	}
 }
 template<class T>
@@ -185,22 +185,22 @@ void BinaryTree<T>::inOrder(BinaryTreeNode<T> *root)
 {
 	if (root != NULL)
 	{
-		//Ìî¿Õ 
+		//å¡«ç©º 
 		inOrder(root->leftChild);
 		Visit(root);
 		inOrder(root->rightChild);
-		//Ìî¿Õ 
+		//å¡«ç©º 
 	}
 }
 template<class T>
 void BinaryTree<T>::postOrder(BinaryTreeNode<T> *root)
 {
-	if (/*Ìî¿Õ*/root != NULL)
+	if (/*å¡«ç©º*/root != NULL)
 	{
-		/*Ìî¿Õ*/
+		/*å¡«ç©º*/
 		postOrder(root->leftChild);
 		postOrder(root->rightChild);
-		/*Ìî¿Õ*/
+		/*å¡«ç©º*/
 		Visit(root);
 	}
 }
@@ -211,7 +211,7 @@ void BinaryTree<T>::Visit(BinaryTreeNode<T> *node)
 }
 template<class T>
 void BinaryTree<T>::CreatTree(BinaryTreeNode<T> * &root)
-{//Ìî¿Õ 
+{//å¡«ç©º 
 	char ele;
 	cin >> ele;
 	if (ele != '#')
@@ -221,10 +221,10 @@ void BinaryTree<T>::CreatTree(BinaryTreeNode<T> * &root)
 		CreatTree(root->leftChild);
 		CreatTree(root->rightChild);
 	}
-}//Ìî¿Õ 
+}//å¡«ç©º 
 
-//Ó¦ÓÃµİ¹éË¼Ïë£º¶ş²æÊ÷µÄÒ¶×ÓÊıµÈÓÚ¸ù½áµã×ó×ÓÊ÷Ò¶×ÓÊıÓë¸ù½áµãÓÒ×ÓÊ÷Ò¶×ÓÊıÖ®ºÍ£»
-//¶ş²æÊ÷µÄ¸ß¶ÈµÈÓÚ¸ù½áµã×ó×ÓÊ÷¸ß¶ÈÓë¸ù½áµãÓÒ×ÓÊ÷¸ß¶ÈµÄ×î´óÖµ¼Ó1. 
+//åº”ç”¨é€’å½’æ€æƒ³ï¼šäºŒå‰æ ‘çš„å¶å­æ•°ç­‰äºæ ¹ç»“ç‚¹å·¦å­æ ‘å¶å­æ•°ä¸æ ¹ç»“ç‚¹å³å­æ ‘å¶å­æ•°ä¹‹å’Œï¼›
+//äºŒå‰æ ‘çš„é«˜åº¦ç­‰äºæ ¹ç»“ç‚¹å·¦å­æ ‘é«˜åº¦ä¸æ ¹ç»“ç‚¹å³å­æ ‘é«˜åº¦çš„æœ€å¤§å€¼åŠ 1. 
 template<class T>
 int BinaryTree<T>::CountNode(BinaryTreeNode<T> *root)
 {
@@ -238,11 +238,11 @@ int BinaryTree<T>::CountNode(BinaryTreeNode<T> *root)
 	{
 		pointer = nodeQueue.front();
 		nodeQueue.pop();
-		//Degree()º¯ÊıÔÚpointer×óÓÒ×ÓÊ÷ÎªnullÊ±Îª0
-		//ÓĞÒ»¸ö×ÓÊ÷ÎªnullÊ±Îª1
-		//Á½¸ö×ÓÊ÷¶¼²»ÎªnullÊ±Îª2
+		//Degree()å‡½æ•°åœ¨pointerå·¦å³å­æ ‘ä¸ºnullæ—¶ä¸º0
+		//æœ‰ä¸€ä¸ªå­æ ‘ä¸ºnullæ—¶ä¸º1
+		//ä¸¤ä¸ªå­æ ‘éƒ½ä¸ä¸ºnullæ—¶ä¸º2
 		if (pointer->Degree() == 0)
-			/*Ìî¿Õ*/
+			/*å¡«ç©º*/
 			count++;
 		if (pointer->leftChild != NULL)
 			nodeQueue.push(pointer->leftChild);
@@ -263,23 +263,23 @@ int BinaryTree<T>::Height(BinaryTreeNode<T> *root)
 	else
 		return right + 1;
 }
-//´úÂëºÜ³¤£¬´ó¼ÒÖ»Òª°ÑÌî¿Õ²¿·ÖĞ´ÁË¾ÍºÃ
-//Ìî¿Õ²¿·ÖºÜ¶à£¬µ«»ù±¾ÄÜ¾ÙÒ»·´Èı
-//ËäÈ»Ã»ÓĞ¹ã¶ÈÓÅÏÈºÍÉî¶ÈÇ°ĞòµÄÒªÇó£¬µ«¸øÁË´ó¼Ò´úÂë£¬Í¬Ñ§ÃÇ¿ÉÒÔ×ÔĞĞÔÄ¶Á
-//´úÂëC++Óï·¨½Ï¶à£¬Í¬Ñ§ÃÇÓĞÎÊÌâ¿ÉÒÔÔÚÉÏ»ú¿ÎÌáÎÊ£¬ÌîĞ´´úÂë»ù±¾±ÜÃâC++Óï·¨
-// cin >> Ïàµ±ÓÚ scanf, cout << Ïàµ±ÓÚprintf£¬ endl Ïàµ±ÓÚ \n
+//ä»£ç å¾ˆé•¿ï¼Œå¤§å®¶åªè¦æŠŠå¡«ç©ºéƒ¨åˆ†å†™äº†å°±å¥½
+//å¡«ç©ºéƒ¨åˆ†å¾ˆå¤šï¼Œä½†åŸºæœ¬èƒ½ä¸¾ä¸€åä¸‰
+//è™½ç„¶æ²¡æœ‰å¹¿åº¦ä¼˜å…ˆå’Œæ·±åº¦å‰åºçš„è¦æ±‚ï¼Œä½†ç»™äº†å¤§å®¶ä»£ç ï¼ŒåŒå­¦ä»¬å¯ä»¥è‡ªè¡Œé˜…è¯»
+//ä»£ç C++è¯­æ³•è¾ƒå¤šï¼ŒåŒå­¦ä»¬æœ‰é—®é¢˜å¯ä»¥åœ¨ä¸Šæœºè¯¾æé—®ï¼Œå¡«å†™ä»£ç åŸºæœ¬é¿å…C++è¯­æ³•
+// cin >> ç›¸å½“äº scanf, cout << ç›¸å½“äºprintfï¼Œ endl ç›¸å½“äº \n
 int main()
 {
 	int num;
 	BinaryTree<char> tree;
 	BinaryTreeNode<char> *root = tree.getRoot();
-	//´´½¨Ê÷
+	//åˆ›å»ºæ ‘
 	tree.CreatTree(root);
 
-	//ÖĞĞò±éÀú
+	//ä¸­åºéå†
 	tree.inOrder(root);
 	cout << endl;
-	//ºóĞò±éÀú
+	//ååºéå†
 	tree.postOrder(root);
 	cout << endl;
 
